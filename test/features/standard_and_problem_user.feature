@@ -23,3 +23,30 @@ Background: Someone use Chrome to visit Saucedemo
       |user           |pass          |
       |"standard_user"|"secret_sauce"|
       |"problem_user" |"secret_sauce"|
+
+  @additems  
+  Scenario Outline: Add items
+  Given A user is in saucedemo
+  When A user enters the username <user> and password <pass>
+  Then the url will contains the inventory subdirectory
+  When A user clicks ADD TO THE CART of an item
+  Then A user can see the cart with a 1
+  When A user clicks to the cart
+  Then A user can see the selected item in the cart
+  Examples:
+      |user           |pass          |
+      |"standard_user"|"secret_sauce"|
+      |"problem_user" |"secret_sauce"|
+
+  @removeitems
+  Scenario Outline: Remove item from the cart
+  Given A user is in saucedemo
+  When A user enters the username <user> and password <pass>
+  Then the url will contains the inventory subdirectory
+  When A user clicks ADD TO THE CART of an item
+  Then A user can see the cart with a 1
+  When A user clicks on REMOVE to unselect an item that it is already in the cart  
+  Examples:
+      |user           |pass          |
+      |"standard_user"|"secret_sauce"|
+      |"problem_user" |"secret_sauce"|
