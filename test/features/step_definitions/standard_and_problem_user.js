@@ -1,6 +1,8 @@
 const {Given, Then, When, Before} = require('@cucumber/cucumber');
 
 selectedItem = "Sauce Labs Backpack"
+shippingInfo = "FREE PONY EXPRESS DELIVERY!"
+totalPrice = "32.39"
 
 Given(/^A user is in saucedemo$/, function() {
   var loginPage = browser.page.loginPage()
@@ -93,4 +95,33 @@ When(/^A user clicks CONTINUE btn$/, function() {
   var checkOutInfoPage = browser.page.checkOutInfoPage()
   checkOutInfoPage
             .clickContinue()
+});
+
+Then(/^A user can check Item, Shipping and Cost information$/, function() {
+  var checkOutOverviewPage = browser.page.checkOutOverviewPage()
+  checkOutOverviewPage
+          .checkoutOverviewUrl()
+          .checkItemInfo(selectedItem)
+          .checkShippingInfo(shippingInfo)
+          .checkTotalInfo(totalPrice)
+            
+});
+
+When(/^A user clicks FINISH btn$/, function() {
+  var checkOutOverviewPage = browser.page.checkOutOverviewPage()
+  checkOutOverviewPage
+            .clickFinishBtn()
+});
+
+Then(/^The message "([^"]*)" is displayed$/, function(message) {
+  var checkOutCompletedPage = browser.page.checkOutCompletedPage()
+  checkOutCompletedPage
+            .checkOutCompletedUrl()
+            .completedInfo(message)
+});
+
+Then(/^The error message "([^"]*)" is displayed$/, function(message) {
+  var checkOutCompletedPage = browser.page.checkOutCompletedPage()
+  checkOutCompletedPage
+            .checkErrorMsg(message)
 });

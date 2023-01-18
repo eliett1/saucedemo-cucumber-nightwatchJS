@@ -69,4 +69,20 @@ Background: Someone use Chrome to visit Saucedemo
   Examples:
       |user           |pass          |firstName |lastName |zip    |
       |"standard_user"|"secret_sauce"|"Testing" |"Person" |"1111" |
-      |"problem_user" |"secret_sauce"|"Problen" |"User"   |"1111" |
+
+  @checkout2
+  Scenario Outline: Checkout2
+  Given A user is in saucedemo
+  When A user enters the username <user> and password <pass>
+  Then the url will contains the inventory subdirectory
+  When A user clicks ADD TO THE CART of an item
+  Then A user can see the cart with a 1
+  When A user clicks to the cart
+  Then A user can see the selected item in the cart
+  When A user clicks CHECKOUT btn
+  And A user enters firstName <firstName> lastName <lastName> and zip <zip>
+  And A user clicks CONTINUE btn
+  Then The error message "Error: Last Name is required" is displayed
+  Examples:
+      |user           |pass          |firstName |lastName |zip    |
+      |"problem_user" |"secret_sauce"|"Problem" |"User"   |"1111" |
