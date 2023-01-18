@@ -50,3 +50,23 @@ Background: Someone use Chrome to visit Saucedemo
       |user           |pass          |
       |"standard_user"|"secret_sauce"|
       |"problem_user" |"secret_sauce"|
+
+  @checkout
+  Scenario Outline: Checkout
+  Given A user is in saucedemo
+  When A user enters the username <user> and password <pass>
+  Then the url will contains the inventory subdirectory
+  When A user clicks ADD TO THE CART of an item
+  Then A user can see the cart with a 1
+  When A user clicks to the cart
+  Then A user can see the selected item in the cart
+  When A user clicks CHECKOUT btn
+  And A user enters firstName <firstName> lastName <lastName> and zip <zip>
+  And A user clicks CONTINUE btn
+  Then A user can check Item, Shipping and Cost information
+  When A user clicks FINISH btn
+  Then The message "THANK YOU FOR YOUR ORDER" is displayed
+  Examples:
+      |user           |pass          |firstName |lastName |zip    |
+      |"standard_user"|"secret_sauce"|"Testing" |"Person" |"1111" |
+      |"problem_user" |"secret_sauce"|"Problen" |"User"   |"1111" |
