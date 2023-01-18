@@ -11,3 +11,15 @@ Background: Someone use Chrome to visit Saucedemo
       |"standard_user"|"secret_sauce"|
       |"problem_user" |"secret_sauce"|
 
+  @logout
+  Scenario Outline: Log out
+  Given A user is in saucedemo
+  When A user enters the username <user> and password <pass>
+  Then the url will contains the inventory subdirectory
+  When A user click burger menu
+  And press Log out
+  Then A user return to main page
+  Examples:
+      |user           |pass          |
+      |"standard_user"|"secret_sauce"|
+      |"problem_user" |"secret_sauce"|
