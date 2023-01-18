@@ -1,0 +1,25 @@
+{
+  "name": "saucedemo-cucumber-nightwatchjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eliett1/saucedemo-cucumber-nightwatchJS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eliett1/saucedemo-cucumber-nightwatchJS/issues"
+  },
+  "homepage": "https://github.com/eliett1/saucedemo-cucumber-nightwatchJS#readme",
+  "devDependencies": {
+    "@cucumber/cucumber": "^8.10.0",
+    "chromedriver": "^108.0.0",
+    "nightwatch": "^2.6.7"
+  }
+}
