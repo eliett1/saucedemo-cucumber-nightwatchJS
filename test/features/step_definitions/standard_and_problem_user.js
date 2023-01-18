@@ -79,3 +79,18 @@ When(/^A user clicks CHECKOUT btn$/, function() {
     cartPage
             .checkout()
 });
+
+When(/^A user enters firstName "(.*?)" lastName "(.*?)" and zip "(.*?)"$/, function(firstName, lastName, zipCode) {
+  var checkOutInfoPage = browser.page.checkOutInfoPage()
+  checkOutInfoPage
+            .checkOutUrl()
+            .typeFirstName(firstName)
+            .typeLastName(lastName)
+            .typeZip(zipCode)
+});
+
+When(/^A user clicks CONTINUE btn$/, function() {
+  var checkOutInfoPage = browser.page.checkOutInfoPage()
+  checkOutInfoPage
+            .clickContinue()
+});
